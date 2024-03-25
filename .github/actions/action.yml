@@ -4,6 +4,9 @@ inputs:
   repository-to-checkout:
     description: 'Nome do repositório a ser clonado'
     required: true
+  repository-ref:
+    description: 'branch a ser analisada'
+    required: true
 
 jobs:
   analisar-arquivos:
