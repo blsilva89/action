@@ -14,3 +14,4 @@ runs:
   steps:
     - name: Verificar versão do Python
       run: python --version
+      shell: bash
