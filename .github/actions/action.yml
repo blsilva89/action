@@ -1,0 +1,22 @@
+name: Analisar Arquivos
+
+inputs:
+  repository-to-checkout:
+    description: 'Nome do repositório a ser clonado'
+    required: true
+
+jobs:
+  analisar-arquivos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar versão do Python
+        run: python --version
+
+      - name: Checkout do código
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.inputs.repository-to-checkout }}
+          path: repository-to-analyze
+
+      - name: Executar script Python de Análise
+        run: python repository-to-analyze/script_de_analise.py repository-to-analyze
