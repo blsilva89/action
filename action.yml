@@ -15,3 +15,14 @@ runs:
     - name: Verificar versão do Python
       run: python --version
       shell: bash
+
+    - name: Checkout do código
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ github.event.inputs.repository-to-checkout }}
+        ref: ${{ github.event.inputs.repository-ref }}
+        path: repository-to-analyze
+
+    - name: Executar script Python de Análise
+      run: python repository-to-analyze/script_de_analise.py repository-to-analyze
+      shell: bash
