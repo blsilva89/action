@@ -1,4 +1,5 @@
 name: Analisar Arquivos
+description: Analisa se há arquivos python no repo
 
 inputs:
   repository-to-checkout:
@@ -8,18 +9,8 @@ inputs:
     description: 'branch a ser analisada'
     required: true
 
-jobs:
-  analisar-arquivos:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verificar versão do Python
-        run: python --version
-
-      - name: Checkout do código
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ github.event.inputs.repository-to-checkout }}
-          path: repository-to-analyze
-
-      - name: Executar script Python de Análise
-        run: python repository-to-analyze/script_de_analise.py repository-to-analyze
+runs:  
+  using: "composite"
+  steps:
+    - name: Verificar versão do Python
+      run: python --version
